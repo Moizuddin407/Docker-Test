@@ -16,6 +16,12 @@ app.get('/api/data', (req, res) => {
     data: [1, 2, 3, 4, 5]
   });
 });
+app.get('/api/newdata', (req, res) => {
+  res.json({
+    message: 'This is sample data from the API.',
+    data: [1, 2, 3, 4, 5]
+  });
+});
 
 // Start the server
 app.listen(PORT, () => {
