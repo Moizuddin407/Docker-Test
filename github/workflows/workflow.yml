@@ -1,0 +1,25 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  buildnpush:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Docker Hub Login
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+      - name: Build the docker image
+        run: docker build -t first-app:latest .
+
+      - name: Tag the image
+        run: docker tag firstapp:latest jawadc/firstapp:latest
+
+      - name: Push the image
+        run: docker push jawadc/firstapp:latest
