@@ -16,10 +16,10 @@ jobs:
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
       - name: Build the docker image
-        run: docker build -t first-app:latest .
+        run: docker build -t devopscp-app:latest .
 
       - name: Tag the image
-        run: docker tag first-app:latest moizzz407/app1:latest
+        run: docker tag devopscp-app:latest moizzz407/app1:latest
 
       - name: Push the image
         run: docker push moizzz407/app1:latest
