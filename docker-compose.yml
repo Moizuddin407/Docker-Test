@@ -1,0 +1,13 @@
+services:
+  app:
+    build: ./Docker-Test
+    image: devopscp-app
+    container_name: node_app
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./Docker-Test:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: "node index.js"
